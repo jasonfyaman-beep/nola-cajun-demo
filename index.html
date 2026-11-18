@@ -115,9 +115,10 @@ p{margin:0 0 1em;text-wrap:pretty}
 /* ---------- the evening: spreads ---------- */
 .evening{position:relative;background:var(--white);color:var(--blue)}
 /* each chapter: one photo filling half the screen edge to edge, held in place while its text scrolls past */
-.split{display:grid;grid-template-columns:1fr 1fr;min-height:100vh}
-.split-media{position:relative;background:var(--blue)}
-.split-media>img,.split-media>video{position:sticky;top:0;width:100%;height:100vh;height:100svh;object-fit:cover;display:block}
+.split{display:grid;grid-template-columns:1fr 1fr;min-height:100vh;min-height:100lvh}
+.split-media{position:relative}
+/* sized to the tallest the screen gets (browser bars hidden), so no strip ever shows under the photo */
+.split-media>img,.split-media>video{position:sticky;top:0;width:100%;height:100vh;height:100lvh;object-fit:cover;display:block}
 .split-text{align-self:center;padding:clamp(90px,10vw,160px) clamp(28px,6.5vw,120px);max-width:700px}
 .split.flip .split-media{order:2}
 .split.flip .split-text{justify-self:end}
@@ -125,7 +126,7 @@ p{margin:0 0 1em;text-wrap:pretty}
 .split p{max-width:32em;color:var(--blue)}
 .split .note{color:var(--blue-soft)}
 /* a photo that runs the full width of the screen between chapters */
-.interlude{position:relative;height:min(82vh,820px);overflow:hidden;background:var(--blue)}
+.interlude{position:relative;height:min(82vh,820px);overflow:hidden}
 .interlude img{width:100%;height:100%;object-fit:cover;object-position:50% 55%;transform:translateY(var(--y,0px)) scale(1.1);will-change:transform}
 figure{margin:0}
 
@@ -152,7 +153,7 @@ figure{margin:0}
 /* ---------- night ---------- */
 .night{background:var(--night);color:var(--lamp)}
 .street{position:relative;height:170vh}
-.street-stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;display:grid;place-items:center;background:var(--blue-deep)}
+.street-stage{position:sticky;top:0;height:100vh;height:100lvh;overflow:hidden;display:grid;place-items:center;background:var(--blue-deep)}
 .street-media,.street-media>*{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .street-media{filter:saturate(.85)}
 .street-dark{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 42%,rgba(13,22,41,.2),rgba(13,22,41,.82) 75%),linear-gradient(180deg,rgba(13,22,41,.55) 0%,rgba(13,22,41,0) 22%,rgba(20,33,61,0) 70%,var(--blue) 100%)}
