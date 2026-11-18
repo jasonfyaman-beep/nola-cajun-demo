@@ -324,7 +324,8 @@ html.intro-lock:not(.intro-on) body::after{content:"";position:fixed;inset:0;z-i
     var EVERY_VISIT = true; /* set to false to show the intro only on someone's first visit */
     var reduce = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
     var seen = false; try { seen = localStorage.getItem("nolaIntroSeen") === "1"; } catch (e) {}
-    window.__nolaIntro = !reduce && (EVERY_VISIT || !seen);
+    window.__nolaIntro = EVERY_VISIT || !seen;
+    window.__nolaCalm = !!reduce;   /* people who turned on "reduce motion" get a still version: no sliding */
     if (window.__nolaIntro) { document.documentElement.classList.add("intro-lock"); document.currentScript.parentNode.classList.add("pre"); }
   })();
   </script>
@@ -762,11 +763,18 @@ new IntersectionObserver((es, o) => es.forEach(e => { if (e.isIntersecting) { li
   glint.style.transform = glintAt(-40);
 
   const easeCut = "cubic-bezier(.65,0,.35,1)", easePart = "cubic-bezier(.76,0,.24,1)";
+  const calm = !!window.__nolaCalm;
   let done = false, timers = [];
   const later = (fn, ms) => timers.push(setTimeout(fn, ms));
   const part = (fast) => {
     if (el.classList.contains("parting")) return;
     el.classList.add("parting");
+    if (calm) {   /* no movement: the cut fades and the screen dissolves into the site */
+      hero.classList.remove("pre");
+      el.animate([{opacity:1},{opacity:0}], {duration:fast ? 300 : 700, easing:"ease-out", fill:"forwards"});
+      later(finish, fast ? 320 : 720);
+      return;
+    }
     const away = H / 2 + Math.abs(W * t) / 2 + 60, dur = fast ? 650 : 1150;
     const nx = Math.sin(deg * Math.PI / 180) * 0.04 * W;     /* drift a touch along the cut, like a slice sliding off */
     A.animate([{transform:"translate(0,0)"},{transform:`translate(${-nx - W*0.015}px, ${-away}px)`}], {duration:dur, easing:easePart, fill:"forwards"});
@@ -787,6 +795,11 @@ new IntersectionObserver((es, o) => es.forEach(e => { if (e.isIntersecting) { li
   const run = () => {
     el.classList.add("ready");
     el.querySelectorAll(".sign").forEach(s => s.animate([{opacity:0, filter:"blur(6px)"},{opacity:1, filter:"blur(0)"}], {duration:520, easing:"cubic-bezier(.22,1,.36,1)", fill:"both"}));
+    if (calm) {
+      later(() => cut.animate([{opacity:0, transform:`translate(0, ${yL}px) rotate(${deg}deg) scaleX(1)`},{opacity:1, transform:`translate(0, ${yL}px) rotate(${deg}deg) scaleX(1)`}], {duration:400, fill:"forwards"}), 600);
+      later(() => part(false), 1500);
+      return;
+    }
     /* 1. the blade's edge catches the light and passes across */
     later(() => {
       glint.animate([{opacity:0, transform:glintAt(-40)},{opacity:1, offset:.15},{opacity:1, offset:.85},{opacity:0, transform:glintAt(W + glint.offsetWidth + 40)}],
