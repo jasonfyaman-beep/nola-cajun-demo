@@ -92,12 +92,12 @@ p{margin:0 0 1em;text-wrap:pretty}
 .s-script{white-space:nowrap;font:400 1em/1 "Yellowtail",cursive;color:var(--tube);text-shadow:0 .012em 0 rgba(255,255,255,.12);letter-spacing:.01em;padding:0 .08em}
 .s-script span{display:inline-block}
 .s-sub{font:400 .2em/1 "Tilt Neon",var(--sans);letter-spacing:.32em;margin-right:-.32em;color:var(--tube2);text-shadow:0 .03em 0 rgba(255,255,255,.1);margin-top:.12em}
-.s-open{position:absolute;right:-.28em;top:-.3em;font:400 .14em/1 "Tilt Neon",var(--sans);letter-spacing:.14em;padding:.42em .5em .38em .64em;border:.11em solid #445058;border-radius:.5em;color:#445058;background:rgba(16,12,20,.9);transform:rotate(6deg)}
+.s-open{position:absolute;right:.35em;bottom:-.32em;font:400 .13em/1 "Tilt Neon",var(--sans);letter-spacing:.14em;padding:.42em .5em .38em .64em;border:.11em solid #4b5264;border-radius:.5em;color:#4b5264;background:#0d1629}
 .sign.on::before{opacity:1}
 .sign::before{background:radial-gradient(closest-side,rgba(255,90,46,.3),rgba(255,90,46,0) 70%)}
 .sign.on .s-script{color:#fff3ec;text-shadow:0 0 .015em #fff,0 0 .05em #ff9a78,0 0 .12em var(--neon),0 0 .28em var(--neon),0 0 .55em rgba(255,90,46,.55)}
 .sign.on .s-sub{color:#fff6e6;text-shadow:0 0 .04em #fff,0 0 .15em #ffd08a,0 0 .4em var(--amber),0 0 .9em rgba(255,170,60,.5)}
-.s-open.on{color:#e9fbff;border-color:#9ae6ff;box-shadow:0 0 .3em #59d7ff,inset 0 0 .3em #59d7ff,0 0 1em rgba(89,215,255,.5);text-shadow:0 0 .2em #59d7ff,0 0 .6em #59d7ff}
+.s-open.on{color:#fff6e8;border-color:#ffd59a;box-shadow:0 0 .3em var(--amber),inset 0 0 .3em var(--amber),0 0 1em rgba(255,179,92,.45);text-shadow:0 0 .2em var(--amber),0 0 .6em var(--amber)}
 .sign.flick .s-script,.sign.flick .s-sub{animation:flick 1.5s linear both}
 .sign.flick .s-sub{animation-delay:.35s}
 @keyframes flick{0%,4%,8%,13%,20%,24%{opacity:.2}2%,6%,10%,16%,22%,26%,100%{opacity:1}}
@@ -105,11 +105,16 @@ p{margin:0 0 1em;text-wrap:pretty}
 @keyframes hum{0%,91%,93%,95%,100%{opacity:1}92%,94%{opacity:.25}}
 
 /* hanging sign in the hero */
-.hang{position:absolute;z-index:4;left:0;right:0;top:clamp(84px,12vh,130px);display:flex;justify-content:flex-end;padding-right:clamp(24px,10vw,170px);pointer-events:none}
-.swing{position:relative;transform-origin:50% -200px;animation:sway 5s cubic-bezier(.36,.07,.19,.97) .3s both}
-.hang .sign{--sz:clamp(64px,8.5vw,128px)}
-.rod{position:absolute;bottom:100%;width:2px;height:200px;background:linear-gradient(#20181f,#5a4a52)}
-.rod:first-child{left:22%}.rod:nth-child(2){right:22%}
+/* the hero sign hangs from a wrought-iron arm off the right-hand wall, like a French Quarter blade sign */
+.hang{position:absolute;z-index:4;left:0;right:0;top:clamp(150px,21vh,200px);display:flex;justify-content:flex-end;padding-right:clamp(40px,9vw,160px);pointer-events:none}
+.arm{position:absolute;right:0;top:-44px;height:5px;width:var(--armw,420px);border-radius:3px;background:linear-gradient(180deg,#4a5166,#151b2b);box-shadow:0 2px 3px rgba(0,0,0,.35)}
+.arm::before{content:"";position:absolute;right:0;top:-18px;width:12px;height:84px;border-radius:2px;background:linear-gradient(90deg,#2a3042,#151b2b)}
+.arm i{position:absolute;right:0;top:var(--braced,52px);height:3px;width:var(--bracel,200px);transform-origin:100% 50%;transform:rotate(var(--bracea,14deg));background:#262c3d;border-radius:2px}
+.arm b{position:absolute;top:-4px;width:13px;height:13px;border:3px solid #262c3d;border-radius:50%;left:var(--knobx,40%)}
+.swing{position:relative;transform-origin:50% -44px;animation:sway 5s cubic-bezier(.36,.07,.19,.97) .3s both}
+.hang .sign{--sz:clamp(64px,8vw,120px);border-radius:.06em;background:linear-gradient(180deg,#1c2640,#111a2e);box-shadow:inset 0 0 0 .022em #5d6782,inset 0 0 0 .05em #0d1629,0 .12em .3em rgba(5,10,20,.45)}
+.rod{position:absolute;bottom:100%;width:2px;height:40px;background:linear-gradient(#151b2b,#4a5166)}
+.rod:first-child{left:18%}.rod:nth-child(2){right:18%}
 @keyframes sway{0%{transform:rotate(3.5deg)}20%{transform:rotate(-2.4deg)}40%{transform:rotate(1.4deg)}60%{transform:rotate(-.7deg)}80%{transform:rotate(.3deg)}100%{transform:rotate(0)}}
 
 /* ---------- the evening: spreads ---------- */
@@ -138,6 +143,8 @@ figure{margin:0}
 .pound{margin:0;padding:0;list-style:none;font-size:16px}
 .pound li{display:flex;justify-content:space-between;gap:12px;padding:8px 0;border-bottom:1px solid rgba(20,33,61,.14)}
 .pound li span:last-child{font-variant-numeric:tabular-nums;white-space:nowrap}
+.pound.two{columns:2;column-gap:36px;margin-top:28px}
+.pound.two li{break-inside:avoid}
 .pound-h{font:italic 600 16px/1 var(--serif);margin:0 0 8px}
 
 .bowls{margin:28px 0 0;padding:0;list-style:none;max-width:26em}
@@ -146,9 +153,6 @@ figure{margin:0}
 .bowls em{font-style:normal;font-variant-numeric:tabular-nums}
 .bowls small{grid-column:1 / -1;font-size:15.5px;font-style:italic;color:var(--blue-soft)}
 
-.chips{display:flex;flex-wrap:wrap;gap:10px 22px;margin:24px 0 0;padding:0;list-style:none;font-size:16.5px}
-.chips li{white-space:nowrap}
-.chips li em{font-style:italic;margin-left:6px;color:var(--blue-soft)}
 
 /* ---------- night ---------- */
 .night{background:var(--night);color:var(--lamp)}
@@ -159,6 +163,7 @@ figure{margin:0}
 .street-dark{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 42%,rgba(13,22,41,.2),rgba(13,22,41,.82) 75%),linear-gradient(180deg,rgba(13,22,41,.55) 0%,rgba(13,22,41,0) 22%,rgba(20,33,61,0) 70%,var(--blue) 100%)}
 .street-inner{position:relative;z-index:2;display:grid;justify-items:center;text-align:center;gap:clamp(24px,4vh,44px);padding:0 var(--gut)}
 .street .sign{--sz:clamp(96px,17vw,240px)}
+.street .sign,footer .sign{background:none;box-shadow:none;padding:0}
 .reflect{position:absolute;left:50%;top:calc(50% + clamp(120px,19vw,260px));transform:translateX(-50%) scaleY(-.55);transform-origin:50% 0;filter:blur(7px);opacity:0;transition:opacity 1.2s .4s;pointer-events:none;-webkit-mask:linear-gradient(180deg,#000,transparent 70%);mask:linear-gradient(180deg,#000,transparent 70%)}
 .reflect.on{opacity:.42}
 .night-line{font:italic 500 clamp(21px,2vw,27px)/1.3 var(--serif);max-width:24em;opacity:0;transform:translateY(10px);transition:opacity .8s 1.6s,transform .8s 1.6s}
@@ -192,34 +197,36 @@ figure{margin:0}
 .menu-foot{display:flex;flex-wrap:wrap;align-items:center;gap:14px 26px;margin-top:34px}
 .menu-foot p{margin:0;color:var(--mist);font-size:16px}
 
-/* catering + sauce */
-.cater{padding:clamp(30px,5vw,60px) 0 clamp(80px,10vw,130px)}
+/* catering, sauce and find us sit on white, so the dark stays with the street and the lit board */
+.day{background:var(--white);color:var(--blue)}
+.day .lnk{color:var(--blue)}
+.cater{padding:clamp(90px,10vw,140px) 0 clamp(30px,4vw,50px)}
 .g-cater{display:grid;grid-template-columns:5fr 7fr;gap:clamp(30px,5vw,80px);align-items:start}
 .g-cater h2{font-size:clamp(30px,3.6vw,48px);line-height:1.08;margin-bottom:20px}
-.g-cater p{opacity:.88;max-width:28em}
+.g-cater p{max-width:28em;color:var(--blue-soft)}
 .trays{list-style:none;margin:0;padding:0;columns:2;column-gap:40px}
-.trays li{break-inside:avoid;display:flex;justify-content:space-between;gap:12px;padding:11px 0;border-bottom:1px solid rgba(251,231,198,.2)}
+.trays li{break-inside:avoid;display:flex;justify-content:space-between;gap:12px;padding:11px 0;border-bottom:1px solid rgba(20,33,61,.14)}
 .trays li span:last-child{font-variant-numeric:tabular-nums}
-.sauce{margin-top:clamp(50px,7vw,90px);display:grid;grid-template-columns:auto 1fr auto;gap:22px 34px;align-items:center;padding:28px 0;border-top:1px solid rgba(249,247,243,.18);border-bottom:1px solid rgba(249,247,243,.18)}
+.sauce{margin-top:clamp(50px,7vw,90px);display:grid;grid-template-columns:1fr auto;gap:18px 40px;align-items:center;padding:30px 0;border-top:1px solid rgba(20,33,61,.16)}
 .jar{width:58px;height:72px;border-radius:10px 10px 12px 12px;background:linear-gradient(90deg,#8a2a10,#c8431b 45%,#952f12);position:relative;box-shadow:inset 0 -14px 0 rgba(0,0,0,.18)}
 .jar::before{content:"";position:absolute;left:-3px;right:-3px;top:-12px;height:14px;border-radius:4px;background:#0d1629;box-shadow:inset 0 0 0 1px rgba(249,247,243,.25)}
 .jar::after{content:"";position:absolute;left:10px;right:10px;top:22px;height:22px;border-radius:3px;background:var(--lamp)}
 .sauce h3{font-size:24px;margin-bottom:4px}
-.sauce p{margin:0;color:var(--mist);font-size:16px}
+.sauce p{margin:0;color:var(--blue-soft);font-size:16px;max-width:40em}
 
 /* find us */
-.find{padding:clamp(70px,9vw,120px) 0;background:linear-gradient(180deg,var(--blue),var(--blue-deep))}
+.find{padding:clamp(40px,5vw,70px) 0 clamp(90px,10vw,140px)}
 .find h2{font-size:clamp(34px,4.4vw,60px);line-height:1.05;margin-bottom:clamp(30px,4vw,54px)}
 .kitchens{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,5vw,80px)}
 .kitchen h3{font-size:30px;margin-bottom:6px}
-.kitchen .sub{font-style:italic;color:var(--mist);margin-bottom:18px}
+.kitchen .sub{font-style:italic;color:var(--blue-soft);margin-bottom:18px}
 .kitchen address{font-style:normal;margin-bottom:22px}
 .hours{width:100%;max-width:420px;border-collapse:collapse;margin-bottom:24px;font-size:15.5px}
-.hours td{padding:8px 0;border-bottom:1px solid rgba(251,231,198,.15)}
+.hours td{padding:8px 0;border-bottom:1px solid rgba(20,33,61,.12)}
 .hours td:last-child{text-align:right;font-variant-numeric:tabular-nums}
-.hours tr.today td{color:#fff;font-weight:600}
+.hours tr.today td{color:var(--blue);font-weight:700}
 .kitchen .acts{display:flex;flex-wrap:wrap;align-items:center;gap:10px 24px}
-.live{font:italic 600 18px/1.3 var(--serif);margin-bottom:16px;color:var(--white)}
+.live{font:italic 600 18px/1.3 var(--serif);margin-bottom:16px;color:var(--blue)}
 
 footer{overflow:hidden;background:var(--blue-deep);color:var(--lamp);padding:clamp(60px,8vw,100px) 0 calc(40px + env(safe-area-inset-bottom))}
 .foot{display:grid;grid-template-columns:auto 1fr;gap:30px 60px;align-items:center}
@@ -246,20 +253,20 @@ footer .sign{--sz:clamp(60px,7vw,90px)}
   .split.flip .split-text{justify-self:stretch}
   .interlude{height:58vh}
   .items,.trays{columns:1}
+  .pound.two{columns:1}
   .g-cater,.kitchens{grid-template-columns:1fr}
-  .sauce{grid-template-columns:auto 1fr}
-  .sauce .btn{grid-column:1 / -1}
+  .sauce{grid-template-columns:1fr}
+  .sauce .btn{justify-self:start}
   .foot{grid-template-columns:1fr}
 }
 @media (max-width:640px){
   body{font-size:16.5px}
   .top{padding-top:18px}
   .top .btn{display:none}
-  .hang{top:104px;justify-content:center;padding-right:0}
-  .swing{transform-origin:50% -150px}
+  .hang{top:150px;justify-content:center;padding-right:0}
   .street .sign{--sz:21vw}
   .hang .sign{--sz:clamp(56px,19vw,84px)}
-  .rod{height:150px}
+
   .hero h1{font-size:clamp(34px,9.6vw,44px)}
   .lede{font-size:16.5px}
   .hero-copy{bottom:28px}
@@ -310,6 +317,7 @@ footer .sign{--sz:clamp(60px,7vw,90px)}
   </header>
 
   <div class="hang" aria-hidden="true">
+    <span class="arm" id="arm"><i></i><b></b></span>
     <div class="swing">
     <span class="rod"></span><span class="rod"></span>
     <div class="sign" id="heroSign">
@@ -360,7 +368,7 @@ footer .sign{--sz:clamp(60px,7vw,90px)}
 </section>
 
 <div class="interlude lift-band" aria-hidden="true">
-  <img data-px="35896424" data-w="1900" alt="" loading="lazy">
+  <img data-px="25003118" data-w="1900" alt="" loading="lazy" style="object-position:50% 40%">
 </div>
 
 <section class="split flip" id="gumbo" aria-labelledby="h-gumbo">
@@ -386,13 +394,13 @@ footer .sign{--sz:clamp(60px,7vw,90px)}
   <div class="split-text">
     <h2 id="h-poboy">6:50, po'boys and a basket for the table.</h2>
     <p>Fried shrimp, catfish, Louisiana oysters or gator on a long roll, dressed and wrapped. Every po'boy comes with Cajun fries, and baskets come with fries and coleslaw.</p>
-    <ul class="chips">
-      <li>Fried shrimp <em>$13</em></li>
-      <li>Fried catfish <em>$13</em></li>
-      <li>Louisiana oyster <em>$16</em></li>
-      <li>Fried gator <em>$16</em></li>
-      <li>N'awlins roast beef <em>$12</em></li>
-      <li>Seafood combo basket <em>$29</em></li>
+    <ul class="pound two">
+      <li><span>Fried shrimp</span><span>$13</span></li>
+      <li><span>Fried catfish</span><span>$13</span></li>
+      <li><span>Louisiana oyster</span><span>$16</span></li>
+      <li><span>Fried gator</span><span>$16</span></li>
+      <li><span>N'awlins roast beef</span><span>$12</span></li>
+      <li><span>Seafood combo basket</span><span>$29</span></li>
     </ul>
   </div>
 </section>
@@ -451,7 +459,7 @@ footer .sign{--sz:clamp(60px,7vw,90px)}
     </div>
   </section>
 
-  <section class="cater" id="catering" aria-labelledby="h-cater">
+  <section class="cater day" id="catering" aria-labelledby="h-cater">
     <div class="wrap">
       <div class="g-cater">
         <div>
@@ -473,7 +481,6 @@ footer .sign{--sz:clamp(60px,7vw,90px)}
         </ul>
       </div>
       <div class="sauce">
-        <div class="jar" aria-hidden="true"></div>
         <div>
           <h3>Take the sauce home</h3>
           <p>NOLA Secret Sauce, the one on the boils, in a 14 oz jar for $14. Cajun and wing seasoning are at the counter too.</p>
@@ -483,7 +490,7 @@ footer .sign{--sz:clamp(60px,7vw,90px)}
     </div>
   </section>
 
-  <section class="find" id="find" aria-labelledby="h-find">
+  <section class="find day" id="find" aria-labelledby="h-find">
     <div class="wrap">
       <h2 id="h-find">Two kitchens, one gumbo.</h2>
       <div class="kitchens">
@@ -692,6 +699,20 @@ const light = () => {
   reflect.classList.add("on"); nightLine.classList.add("on");
 };
 new IntersectionObserver((es, o) => es.forEach(e => { if (e.isIntersecting) { light(); o.disconnect(); } }), {threshold: .55}).observe(bigSign);
+
+/* ---------- the iron arm reaches from the right-hand wall to the sign ---------- */
+function sizeArm(){
+  const arm = document.getElementById("arm"), sign = document.getElementById("heroSign"), hang = arm.parentElement;
+  const hr = hang.getBoundingClientRect(), sr = sign.getBoundingClientRect();
+  const w = Math.round(hr.right - (sr.left + sr.width * 0.18) + 16);
+  const run = w * 0.42, drop = 46;
+  arm.style.setProperty("--armw", w + "px");
+  arm.style.setProperty("--bracel", Math.round(Math.hypot(run, drop)) + "px");
+  arm.style.setProperty("--bracea", (Math.atan2(drop, run) * 180 / Math.PI).toFixed(1) + "deg");
+  arm.style.setProperty("--braced", drop + "px");
+  arm.style.setProperty("--knobx", Math.round(w * 0.5) + "px");
+}
+sizeArm(); addEventListener("resize", sizeArm); document.fonts && document.fonts.ready.then(sizeArm);
 
 /* ---------- scroll: evening comes on in the hero, gentle drift on pictures ---------- */
 const hero = document.getElementById("top"), bar = document.getElementById("orderBar"), flt = document.getElementById("orderFloat");
