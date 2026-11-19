@@ -121,7 +121,7 @@ p{margin:0 0 1em;text-wrap:pretty}
 .evening{position:relative;background:var(--white);color:var(--blue)}
 /* each chapter: one photo filling half the screen edge to edge, held in place while its text scrolls past */
 .split{display:grid;grid-template-columns:1fr 1fr;min-height:100vh;min-height:100lvh}
-.split-media{position:relative}
+.split-media{position:relative;background:#e6e1d8}
 /* sized to the tallest the screen gets (browser bars hidden), so no strip ever shows under the photo */
 .split-media>img,.split-media>video{position:sticky;top:0;width:100%;height:100vh;height:100lvh;object-fit:cover;display:block}
 .split-text{align-self:center;padding:clamp(90px,10vw,160px) clamp(28px,6.5vw,120px);max-width:700px}
@@ -135,7 +135,7 @@ p{margin:0 0 1em;text-wrap:pretty}
 .interlude img{width:100%;height:100%;object-fit:cover;object-position:50% 55%;transform:translateY(var(--y,0px)) scale(1.1);will-change:transform}
 figure{margin:0}
 /* three of NOLA's own plates, edge to edge */
-.trio{display:grid;grid-template-columns:repeat(3,1fr);gap:0}
+.trio{display:grid;grid-template-columns:repeat(3,1fr);gap:0;background:#e6e1d8}
 .trio img{width:100%;aspect-ratio:4/5;object-fit:cover;display:block;max-height:88vh}
 
 .feature{border-top:1px solid rgba(20,33,61,.28);border-bottom:1px solid rgba(20,33,61,.28);padding:20px 0 16px;margin:30px 0 26px}
