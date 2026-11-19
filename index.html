@@ -134,6 +134,9 @@ p{margin:0 0 1em;text-wrap:pretty}
 .interlude{position:relative;height:min(82vh,820px);overflow:hidden}
 .interlude img{width:100%;height:100%;object-fit:cover;object-position:50% 55%;transform:translateY(var(--y,0px)) scale(1.1);will-change:transform}
 figure{margin:0}
+/* three of NOLA's own plates, edge to edge */
+.trio{display:grid;grid-template-columns:repeat(3,1fr);gap:0}
+.trio img{width:100%;aspect-ratio:4/5;object-fit:cover;display:block;max-height:88vh}
 
 .feature{border-top:1px solid rgba(20,33,61,.28);border-bottom:1px solid rgba(20,33,61,.28);padding:20px 0 16px;margin:30px 0 26px}
 .feature-top{display:flex;justify-content:space-between;align-items:baseline;gap:16px}
@@ -274,6 +277,9 @@ html.intro-lock:not(.intro-on) body::after{content:"";position:fixed;inset:0;z-i
   .split-text{padding:56px var(--gut) 80px;max-width:none}
   .split.flip .split-text{justify-self:stretch}
   .interlude{height:58vh}
+  .trio{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
+  .trio::-webkit-scrollbar{display:none}
+  .trio img{flex:0 0 78vw;scroll-snap-align:start;max-height:none}
   .items,.trays{columns:1}
   .pound.two{columns:1}
   .g-cater,.kitchens{grid-template-columns:1fr}
@@ -377,10 +383,7 @@ html.intro-lock:not(.intro-on) body::after{content:"";position:fixed;inset:0;z-i
 
 <section class="split" id="boil" aria-labelledby="h-boil">
   <div class="split-media">
-    <video data-lazy muted loop playsinline preload="none" aria-label="Boiled Louisiana crawfish, close up"
-      poster="https://images.pexels.com/videos/8354472/4k-boiling-california-catch-of-fish-8354472.jpeg?auto=compress&cs=tinysrgb&w=1400"
-      data-sm="https://videos.pexels.com/video-files/8354472/8354472-sd_960_540_30fps.mp4"
-      data-lg="https://videos.pexels.com/video-files/8354472/8354472-hd_1920_1080_30fps.mp4"></video>
+    <img data-nola="restaurants/restaurant-188803000000000000/menu/images/item-612acef5-3f5a-4d78-89fb-2ca095a1ec3a.jpg" alt="NOLA's seafood sampler: snow crab, shrimp, mussels and corn in Secret Sauce" loading="lazy" style="object-position:45% 50%">
   </div>
   <div class="split-text">
     <h2 id="h-boil">5:30, and the boil comes out of the pot.</h2>
@@ -406,7 +409,7 @@ html.intro-lock:not(.intro-on) body::after{content:"";position:fixed;inset:0;z-i
 
 <section class="split flip" id="gumbo" aria-labelledby="h-gumbo">
   <div class="split-media">
-    <img data-px="36128046" data-w="1100" alt="Gumbo over rice with collard greens and a hot dog, on a table covered in newspaper" loading="lazy">
+    <img data-nola="restaurants/restaurant-188803000000000000/menu/images/item-e60c3bac-16a6-47b1-8063-75d964309378.jpg" alt="A bowl of NOLA Gumbo with shrimp over rice, on a blue table" loading="lazy">
   </div>
   <div class="split-text">
     <h2 id="h-gumbo">6:15, a bowl of gumbo before the rush.</h2>
@@ -422,7 +425,7 @@ html.intro-lock:not(.intro-on) body::after{content:"";position:fixed;inset:0;z-i
 
 <section class="split" id="poboys" aria-labelledby="h-poboy">
   <div class="split-media">
-    <img data-px="8352794" data-w="1400" alt="A tray of blackened fish, shrimp and corn with a long roll of French bread on top" loading="lazy" style="object-position:40% 50%">
+    <img data-nola="restaurants/restaurant-188803000000000000/menu/images/item-cce6a1b1-805e-44d2-9f3c-b7cb60a9a5a8.jpg" alt="NOLA's fried Louisiana oyster po'boy with remoulade, lettuce, tomato and Cajun fries" loading="lazy" style="object-position:35% 50%">
   </div>
   <div class="split-text">
     <h2 id="h-poboy">6:50, po'boys and a basket for the table.</h2>
@@ -438,9 +441,15 @@ html.intro-lock:not(.intro-on) body::after{content:"";position:fixed;inset:0;z-i
   </div>
 </section>
 
+<div class="trio" aria-label="More from the menu">
+  <img data-nola="menu_service/restaurants/6dd69d93-418d-4657-a543-7b81f3ebad22/MenuItem/bc01cf75-ceef-4a04-b768-c3f00dafc1c6.jpg" alt="Cajun shrimp dinner over broccoli" loading="lazy">
+  <img data-nola="restaurants/restaurant-188803000000000000/menu/images/item-6d9977a8-e3b5-466a-b09b-6a978473c9c9.jpg" alt="Jambalaya with chicken, andouille and shrimp" loading="lazy">
+  <img data-nola="menu_service/restaurants/6dd69d93-418d-4657-a543-7b81f3ebad22/MenuItem/2f63b059-24ed-4860-91d1-28de9023bd22.jpg" alt="NOLA garlic noodles with shrimp in Secret Sauce" loading="lazy">
+</div>
+
 <section class="split flip" id="story" aria-labelledby="h-story">
   <div class="split-media">
-    <img data-px="32809027" data-w="1100" alt="A cook pouring a pan of seafood into a steaming pot" loading="lazy">
+    <img data-nola="restaurants/restaurant-188803000000000000/menu/images/item-94842d41-c441-454a-9785-b3af0fdf3588.jpg" alt="Jars of NOLA Secret Sauce with the NOLA label, on a blue picnic table" loading="lazy" style="object-position:50% 62%">
   </div>
   <div class="split-text">
     <h2 id="h-story">It started in a hot dog stand.</h2>
@@ -559,7 +568,7 @@ html.intro-lock:not(.intro-on) body::after{content:"";position:fixed;inset:0;z-i
     <div class="sign on" aria-hidden="true"><span class="s-script">NOLA</span><span class="s-sub">CAJUN KITCHEN</span></div>
     <div class="foot-text">
       <p>NOLA Cajun Kitchen, 378 Maple Ave, Suite 3104, Shrewsbury, MA 01545. <a href="tel:+17742432375">(774) 243-2375</a></p>
-      <p>This is a concept website made for NOLA by Vivan, a local student. It isn't NOLA's official site. Food photos are stand-ins until NOLA's own dishes are photographed.</p>
+      <p>This is a concept website made for NOLA by Vivan, a local student. It isn't NOLA's official site. Food photos are NOLA's own, from their online menu. Street and skyline photos are from Pexels.</p>
     </div>
   </div>
 </footer>
@@ -675,6 +684,17 @@ document.querySelectorAll("img[data-px]").forEach(img => {
   img.srcset = `${PX(id, Math.round(w*.6))} ${Math.round(w*.6)}w, ${PX(id, w)} ${w}w, ${PX(id, Math.round(w*1.5))} ${Math.round(w*1.5)}w`;
   img.sizes = img.closest(".interlude") ? "100vw" : "(max-width: 900px) 100vw, 50vw";
   img.src = PX(id, w);
+});
+
+/* ---------- NOLA's own photos (from their online menu), resized on the fly ---------- */
+const ORIG = k => `https://d2s742iet3d3t1.cloudfront.net/${k}`;
+const SIZED = (k, w) => `https://wsrv.nl/?url=d2s742iet3d3t1.cloudfront.net/${k}&w=${w}&q=78&output=webp&we`;
+document.querySelectorAll("img[data-nola]").forEach(img => {
+  const k = img.dataset.nola;
+  img.srcset = [600, 1000, 1400, 1900].map(w => `${SIZED(k, w)} ${w}w`).join(", ");
+  img.sizes = img.closest(".trio") ? "(max-width: 900px) 78vw, 34vw" : "(max-width: 900px) 100vw, 50vw";
+  img.src = SIZED(k, 1000);
+  img.addEventListener("error", () => { img.removeAttribute("srcset"); img.src = ORIG(k); }, {once:true});
 });
 
 /* ---------- hours (Shrewsbury) ---------- */

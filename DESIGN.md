@@ -21,7 +21,7 @@ Rule: orange appears only where someone can order, or on the sign. Never on head
 ## Imagery
 - No frames, boxes or captions. Each chapter is a photo that fills half the screen edge to edge and stays put while its text scrolls; on phones it runs full width at 4:5.
 - One full-width photo between chapters, with a slow drift.
-- Food photos are Pexels stand-ins until NOLA's own dishes are shot.
+- Food photos are NOLA's own, from their Toast online menu, loaded through wsrv.nl (free resizer) at the size each screen needs, falling back to the original. Before this goes official: get the owner's OK and host the photos on the site itself.
 
 ## Components
 - Primary: hot-sauce-label button (orange field, white keyline inside the edge, 3px radius).
